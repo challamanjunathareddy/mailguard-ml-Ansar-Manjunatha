@@ -10,11 +10,16 @@ import streamlit as st
 from src.app_resources import get_metrics_store, theme_is_dark
 from src.charts import class_distribution_chart, latency_chart
 from src.logging_utils import get_log_buffer
+from src.ui import page_header
 
 store = get_metrics_store()
 dark = theme_is_dark()
 
-st.title("Monitoring")
+page_header(
+    "LIVE OPERATIONS",
+    "Monitoring",
+    "Track live inference activity, response times, prediction mix, and service health for this app instance.",
+)
 st.caption(
     f"In-memory metrics shared by all users of this app instance. Counters are cumulative since the process "
     f"started; latency p95, charts and history cover the last {store.window_size:,} requests, and the log view keeps "

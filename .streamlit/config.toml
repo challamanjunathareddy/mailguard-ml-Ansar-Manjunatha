@@ -1,3 +1,11 @@
+[theme]
+base = "light"
+primaryColor = "#0f766e"
+backgroundColor = "#f5f8fa"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#183541"
+font = "sans serif"
+
 [server]
 # Uploaded .eml files larger than this (MB) are rejected by Streamlit; the app also enforces a 1 MB email limit.
 maxUploadSize = 2

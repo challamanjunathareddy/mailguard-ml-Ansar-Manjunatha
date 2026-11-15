@@ -10,8 +10,13 @@ import streamlit as st
 from src import config
 from src.app_resources import get_model_bundle, load_artifact_json
 from src.features import FEATURE_DESCRIPTIONS
+from src.ui import page_header
 
-st.title("Model Information")
+page_header(
+    "MODEL CARD",
+    "Model Information",
+    "Review the model’s training context, evaluation results, data provenance, runtime artifact, and known limitations.",
+)
 
 card = load_artifact_json(config.MODEL_CARD_PATH)
 model, model_error = get_model_bundle()

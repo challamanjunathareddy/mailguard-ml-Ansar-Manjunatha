@@ -14,9 +14,14 @@ from src.charts import (
     probability_histogram,
     threshold_chart,
 )
+from src.ui import page_header
 
 dark = theme_is_dark()
-st.title("Model Evaluation")
+page_header(
+    "MODEL QUALITY",
+    "Model Evaluation",
+    "Compare candidate models, inspect held-out performance, and understand where the deployed classifier makes mistakes.",
+)
 
 ev = load_artifact_json(config.EVALUATION_PATH)
 if not ev:

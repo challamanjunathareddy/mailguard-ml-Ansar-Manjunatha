@@ -10,6 +10,7 @@ from src.app_resources import get_service, theme_is_dark
 from src.charts import contribution_chart, probability_bar
 from src.features import FEATURE_DESCRIPTIONS
 from src.inference import InferenceError, ModelUnavailableError, PredictionResult
+from src.ui import page_header
 from src.validation import ValidationError, validate_upload_filename
 
 BODY_PREVIEW_CHARS = 4_000
@@ -17,10 +18,12 @@ BODY_PREVIEW_CHARS = 4_000
 service = get_service()
 dark = theme_is_dark()
 
-st.title("Email Analyzer")
-st.caption(
+page_header(
+    "ANALYSIS WORKSPACE",
+    "Email Analyzer",
     "Paste raw email source (headers + body), paste just the body text, or upload an `.eml` file. "
-    "Content is analysed in memory only; logs record request metadata, never the email itself."
+    "Content is analysed in memory only; logs record request metadata, never the email itself.",
+    byline="Project by Ansar and Manjunatha",
 )
 
 if not service.ready:
@@ -51,7 +54,7 @@ def _run(raw: str | bytes | None, source: str) -> None:
         st.session_state.last_error = ("error", f"Analysis failed unexpectedly (request id `{exc.request_id}`). It has been logged.")
 
 
-input_col, settings_col = st.columns([3, 1], gap="large")
+input_col, settings_col = st.columns([2.4, 1.6], gap="large")
 
 with settings_col:
     st.subheader("Decision threshold")
